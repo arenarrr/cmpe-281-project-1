@@ -1,0 +1,21 @@
+{
+  "name": "file-server-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild --bundle --platform=node --target=node12 --outdir=build index.js",
+    "export": "cd build && zip index.js.zip index.js",
+    "deploy": "aws lambda update-function-code --function-name filesUploadReadDelete --zip-file fileb://build/index.js.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1234.0",
+    "busboy": "^1.6.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.11"
+  }
+}

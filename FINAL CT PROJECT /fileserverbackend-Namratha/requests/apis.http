@@ -1,0 +1,63 @@
+### POST request with a header
+POST {{endpoint}}/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@gmail.com",
+  "password": "123456"
+}
+
+### POST login
+POST {{endpoint}}/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "johndoe@gmail.com",
+  "password": "123456"
+}
+
+### GET files
+GET {{endpoint}}/files
+Authorization: Bearer {{token}}
+
+
+### POST file
+POST {{endpoint}}/files
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Description
+--WebAppBoundary
+Content-Disposition: form-data; name="data"; filename="test.txt"
+Content-Type: application/octet-stream
+
+< ../test.txt
+--WebAppBoundary--
+
+### PUT file
+PUT {{endpoint}}/files/1
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Description2
+--WebAppBoundary
+Content-Disposition: form-data; name="data"; filename="test.txt"
+Content-Type: application/octet-stream
+
+< ../test.txt
+--WebAppBoundary--
+
+
+### DELETE file
+DELETE {{endpoint}}/files/9
+Authorization: Bearer {{token}}
